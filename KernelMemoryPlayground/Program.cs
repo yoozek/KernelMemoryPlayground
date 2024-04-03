@@ -15,31 +15,10 @@ var memory = new KernelMemoryBuilder()
 var importDocuments = false;
 if (importDocuments)
 {
-    await memory.ImportDocumentAsync("Resources/C01L01.md", tags: new TagCollection
+    foreach (var filesFile in Directory.GetFiles("Resources"))
     {
-        { "lesson", "C01L01" },
-        { "title", "Wprowadzenie do Generative AI"}
-    });
-    await memory.ImportDocumentAsync("Resources/C01L02.md", tags: new TagCollection
-    {
-        { "lesson", "C01L02" },
-        { "title", "Zasady działania LLM"}
-    });
-    await memory.ImportDocumentAsync("Resources/C01L03.md", tags: new TagCollection
-    {
-        { "lesson", "C01L03" },
-        { "title", "Prompt Design"}
-    });
-    await memory.ImportDocumentAsync("Resources/C01L04.md", tags: new TagCollection
-    {
-        { "lesson", "C01L04" },
-        { "title", "OpenAI API"}
-    });
-    await memory.ImportDocumentAsync("Resources/C01L05.md", tags: new TagCollection
-    {
-        { "lesson", "C01L05" },
-        { "title", "Prompt Engineering"}
-    });
+        await memory.ImportDocumentAsync(filesFile);
+    }
 }
 
 while (true)
